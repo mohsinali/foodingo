@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
 gem 'thin'
+gem "parse-ruby-client"
 group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
