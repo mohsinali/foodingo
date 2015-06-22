@@ -1,4 +1,4 @@
-Foodingo
+Restaurant Menus
 ================
 
 Rails Composer, open source, supported by subscribers.
@@ -28,7 +28,7 @@ choose  Enter your selection: [none]
 option  Front-end framework?
 choose  Enter your selection: [bootstrap3]
 option  Add support for sending email?
-choose  Enter your selection: [gmail]
+choose  Enter your selection: [mandrill]
 option  Authentication?
 choose  Enter your selection: [devise]
 option  Devise modules?
