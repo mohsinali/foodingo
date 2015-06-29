@@ -8,5 +8,5 @@ Role.create(
 	name: "admin"
 	)
 Role.create(
-	name: "restaurant_owner"
+	name: "merchant"
 	)
