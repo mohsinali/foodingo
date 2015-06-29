@@ -11,6 +11,7 @@ gem 'rabl'
 gem 'oj'
 gem 'carrierwave'
 gem 'font-awesome-rails'
+gem 'parse-ruby-client'
 
 group :development, :test do
   gem 'byebug'
