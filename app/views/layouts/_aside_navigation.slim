@@ -2,14 +2,14 @@ aside#menu
   #navigation
     .profile-picture
       a href="index.html"         
-        = image_tag "profile.jpg", class: "img-circle m-b"
+        = image_tag "logo_100x100.png", class: "img-circle m-b"
       .stats-label.text-color
         - if user_signed_in?
           span.font-extra-bold.font-uppercase #{current_user.email}
         .dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#" 
             small.text-muted
-              | Founder of App
+              | Foodingo Portal
               b.caret
           ul.dropdown-menu.animated.fadeInRight.m-t-xs
             li
@@ -33,9 +33,9 @@ aside#menu
         = link_to restaurants_path do
           span.nav-label My Restaurants
       li
-        = link_to categories_path do        
+        = link_to "#" do        
           span.nav-label My Analytics
 
       li
-        = link_to menus_path do
+        = link_to "#" do
           span.nav-label My Market
