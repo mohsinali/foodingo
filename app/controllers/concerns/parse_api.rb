@@ -7,4 +7,12 @@ module ParseApi
 		restaurants.get
   end
 
+  def create_restaurant rest_params, user
+  	restaurant = Parse::Object.new("cafedb")
+    restaurant["cafename"] = rest_params[:cafename]
+    restaurant["cafelocation"] = rest_params[:cafelocation]
+    restaurant["merchant_id"] = user.parse_merchant_id
+    restaurant.save
+  end
+
 end

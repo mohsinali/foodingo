@@ -1,0 +1,15 @@
+= simple_form_for :restaurant, :url => "/restaurants" do |f|
+  / = f.error_notification
+  / br
+
+  .form-inputs
+    = f.input :cafename, label: false, placeholder: "Restaurant Name", class: 'form-control'
+
+  .form-inputs
+    = f.input :cafelocation, label: false, placeholder: "Address", class: 'form-control'
+
+  br
+  .form-actions
+    = f.submit "Add", class: "btn btn-primary"
+    |  
+    = link_to 'Back', restaurants_path, class: "btn btn-default"
