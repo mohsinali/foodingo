@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :device_table_mappings
   resources :menus
-  resources :restaurants, :categories
+  resources :restaurants, :dishes, :categories
   root to: 'restaurants#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }

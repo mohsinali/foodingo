@@ -20,8 +20,11 @@
             tr
               th Restaurant Name
               th Location
+              th Actions
 
           - @restaurants.each do |restaurant|
             tr
               td #{restaurant["cafename"]}
               td #{restaurant["cafelocation"]}
+              td
+                = link_to "Add Dishes", "#", class: 'btn btn-primary btn-xs'
