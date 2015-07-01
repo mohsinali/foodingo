@@ -2,8 +2,9 @@
   .row
     .col-md-12
       .text-center.m-b-md
-        h3 PLEASE LOGIN TO APP
-        small This is the best app ever!
+        = image_tag "logo_100x100.png"
+        h3 PLEASE LOGIN TO OUR PORTAL
+        small Foodingo Web Portal
       .hpanel
         .panel-body
           = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|

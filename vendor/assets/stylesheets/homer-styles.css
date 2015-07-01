@@ -549,25 +549,25 @@ body.blank {
 .login-container {
     width: 420px;
     margin: auto;
-    padding-top: 6%
+    padding-top: 3%
 }
 
 .register-container {
     width: 720px;
     margin: auto;
-    padding-top: 6%
+    padding-top: 3%
 }
 
 .lock-container {
     width: 420px;
     margin: auto;
-    padding-top: 6%
+    padding-top: 3%
 }
 
 .error-container {
     width: 620px;
     margin: auto;
-    padding-top: 6%
+    padding-top: 3%
 }
 
 .big-icon {
