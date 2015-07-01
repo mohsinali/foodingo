@@ -27,4 +27,4 @@
               td #{restaurant["cafename"]}
               td #{restaurant["cafelocation"]}
               td
-                = link_to "Add Dishes", "#", class: 'btn btn-primary btn-xs'
+                = link_to "Add Dishes", new_restaurant_dish_path(restaurant_id: restaurant["objectId"]), class: 'btn btn-primary btn-xs'
