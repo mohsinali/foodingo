@@ -35,6 +35,7 @@ html
 
     #wrapper
       .content.animate-panel
+        == render 'layouts/messages'
         == yield
     
     /! Include javascript per-controller - vendor plugins    
