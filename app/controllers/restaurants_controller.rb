@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
 
+  PARSE_CLASS_NAME = "cafedb"
+
   include ParseApi
 
   def index

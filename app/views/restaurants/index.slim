@@ -11,20 +11,23 @@
     small Listing Restaurants
 
 
-.row
-  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
-    .hpanel     
-      .panel-body        
-        table.table cellpadding="1" cellspacing="1"
-          thead
-            tr
-              th Restaurant Name
-              th Location
-              th Actions
+- if current_user.parse_merchant_id.blank?
+  .alert.alert-info Currently not registered as a valid restaurant owner.
+- else
+  .row
+    .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+      .hpanel     
+        .panel-body        
+          table.table cellpadding="1" cellspacing="1"
+            thead
+              tr
+                th Restaurant Name
+                th Location
+                th Actions
 
-          - @restaurants.each do |restaurant|
-            tr
-              td #{restaurant["cafename"]}
-              td #{restaurant["cafelocation"]}
-              td
-                = link_to "Add Dishes", new_restaurant_dish_path(restaurant_id: restaurant["objectId"]), class: 'btn btn-primary btn-xs'
+            - @restaurants.each do |restaurant|
+              tr
+                td #{restaurant["cafename"]}
+                td #{restaurant["cafelocation"]}
+                td
+                  = link_to "Add Dishes", new_restaurant_dish_path(restaurant_id: restaurant["objectId"]), class: 'btn btn-primary btn-xs'

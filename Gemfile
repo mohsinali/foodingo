@@ -12,6 +12,7 @@ gem 'oj'
 gem 'carrierwave'
 gem 'font-awesome-rails'
 gem 'parse-ruby-client'
+gem 'jquery-validation-rails'
 
 group :development, :test do
   gem 'byebug'

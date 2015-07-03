@@ -1,0 +1,13 @@
+= simple_form_for :dish, url: "/dishes", html: {class: "dishes_form"} do |f|
+  .form-inputs
+    = f.input :name, label: false, placeholder: "Dish name", class: 'form-control'
+
+  .form-inputs
+    = f.input :price, label: false, placeholder: "Price", class: 'form-control'
+    = f.input :cafedb_id, as: "hidden", input_html: { value: params[:restaurant_id] }
+
+  br
+  .form-actions
+    = f.submit "Add", class: "btn btn-primary btn-add-dish"
+    |  
+    = link_to 'Back', restaurants_path, class: "btn btn-default"

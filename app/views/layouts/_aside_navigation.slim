@@ -2,10 +2,10 @@ aside#menu
   #navigation
     .profile-picture
       a href="index.html"         
-        = image_tag "logo_100x100.png", class: "img-circle m-b"
+        = image_tag "logo80x80.png", class: "img-circle m-b"
       .stats-label.text-color
         - if user_signed_in?
-          span.font-extra-bold.font-uppercase #{current_user.email}
+          span.font-extra-bold #{current_user.email}
         .dropdown
           a.dropdown-toggle data-toggle="dropdown" href="#" 
             small.text-muted
