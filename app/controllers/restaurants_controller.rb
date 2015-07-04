@@ -9,6 +9,11 @@ class RestaurantsController < ApplicationController
     @restaurants = get_restaurants current_user
   end
 
+  def show
+    @restaurant = Restaurant.get_restaurant params[:id]
+    @dishes = Restaurant.dishes @restaurant["objectId"]
+  end
+
   def create
     create_restaurant params[:restaurant], current_user
     

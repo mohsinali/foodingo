@@ -1,0 +1,24 @@
+.hpanel
+  .panel-body    
+    h2.font-light.m-b-xs
+      = @restaurant["cafename"]
+    small = @restaurant["cafelocation"]
+    
+
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body
+        h2 Dishes
+
+        table.table
+          thead
+            tr
+              th Name
+              th Price
+
+          tbody
+            - @dishes.each do |d|
+              tr
+                td = d["dish"]
+                td = number_to_currency(d["price"])

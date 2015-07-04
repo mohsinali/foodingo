@@ -31,3 +31,5 @@
                 td #{restaurant["cafelocation"]}
                 td
                   = link_to "Add Dishes", new_restaurant_dish_path(restaurant_id: restaurant["objectId"]), class: 'btn btn-primary btn-xs'
+                  |  
+                  = link_to "Detail", restaurant_path(id: restaurant['objectId']), class: 'btn btn-primary btn-xs'
