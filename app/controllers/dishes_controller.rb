@@ -2,7 +2,7 @@ class DishesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @rst = Restaurant.get_restaurant params[:restaurant_id]    
+    @rst = Restaurant.get_restaurant params[:restaurant_id]
   end
 
   def create
