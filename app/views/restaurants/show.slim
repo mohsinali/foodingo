@@ -1,5 +1,10 @@
 .hpanel
-  .panel-body    
+  .panel-body
+    #hbreadcrumb.pull-right.m-t-lg
+      ol.hbreadcrumb.breadcrumb
+        li          
+          = link_to 'Add a Dish', new_restaurant_dish_path(restaurant_id: @restaurant["objectId"]), class: "btn btn-primary btn-xs"
+
     h2.font-light.m-b-xs
       = @restaurant["cafename"]
     small = @restaurant["cafelocation"]

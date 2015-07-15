@@ -13,7 +13,7 @@ class AnalyticsController < ApplicationController
         frequency[hour] = 1
       end      
     end
-
+    
     gon.keys = frequency.keys.sort.map { |e| "%02d" % e + ":00" }
 
   end

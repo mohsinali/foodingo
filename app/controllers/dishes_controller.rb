@@ -9,7 +9,7 @@ class DishesController < ApplicationController
     dish_attributes = params["dish"]
     Dish.create_dish dish_attributes
 
-    redirect_to restaurants_path, notice: "Dish has been added successfully."
+    redirect_to restaurant_path(id: dish_attributes["cafedb_id"]), notice: "Dish has been added successfully."
   end
 
 end
