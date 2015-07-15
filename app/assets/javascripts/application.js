@@ -26,5 +26,5 @@
 //= require peity/jquery.peity.min.js
 //= require sparkline/index.js
 //= require homer.js
-//= require charts.js
+//= require chartjs/Chart.min.js
 	
