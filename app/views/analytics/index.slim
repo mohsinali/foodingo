@@ -10,8 +10,12 @@
     .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
       .hpanel     
         .panel-body        
-          div
-          	canvas#lineOptions height="140"
+          - if @history.empty?
+            .text-info
+              | Currently no stats are available.
+          - else
+            div
+            	canvas#lineOptions height="140"
 
           .text-center
             h1.m-xs.font-trans User Frequency
