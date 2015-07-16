@@ -13,6 +13,9 @@
           div
           	canvas#lineOptions height="140"
 
+          .text-center
+            h1.m-xs.font-trans User Frequency
+
 javascript:
 	$(function () {
 
@@ -21,7 +24,7 @@ javascript:
          * Options for Line chart
          */
         var lineData = {
-            labels: gon.keys,
+            labels: gon.x_axis,
             datasets: [
                 
                 {
@@ -32,7 +35,7 @@ javascript:
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(26,179,148,1)",
-                    data: [16, 32, 20, 18, 26, 42, 33, 44, 32, 18, 26, 3, 15]
+                    data: gon.y_axis
                 }
             ]
         };
