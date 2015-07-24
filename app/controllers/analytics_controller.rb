@@ -2,6 +2,7 @@ class AnalyticsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    MealHistory.dishes_frequency
     @history = MealHistory.history current_user.parse_merchant_id
 
     frequency = Hash.new
