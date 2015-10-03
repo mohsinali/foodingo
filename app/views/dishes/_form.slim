@@ -6,6 +6,9 @@
     = f.input :price, label: false, placeholder: "Price", class: 'form-control'
     = f.input :cafedb_id, as: "hidden", input_html: { value: params[:restaurant_id] }
 
+  .form-inputs
+    = f.input :description, label: false, as: :text, placeholder: "Enter description here...", class: 'form-control'
+
   br
   .form-actions
     = f.submit "Add", class: "btn btn-primary btn-add-dish"
