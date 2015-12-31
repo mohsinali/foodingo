@@ -35,3 +35,4 @@ bower.json
 .powenv
 config/application.yml
 config/database.yml
+public/uploads/tmp/*
