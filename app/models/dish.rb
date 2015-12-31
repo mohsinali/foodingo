@@ -18,4 +18,10 @@ class Dish < ActiveRecord::Base
     dish.get.first
   end
 
+  def self.delete_dish objectId
+    dish = Parse::Query.new(DISHES_CLASS_NAME)
+    dish.eq("objectId", objectId)
+    dish.get.first.parse_delete
+  end
+
 end

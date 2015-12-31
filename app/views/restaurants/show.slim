@@ -28,4 +28,7 @@
               tr
                 td = d["dish"]
                 td = number_to_currency(d["price"])
-                td = link_to "View", dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
+                td 
+                  = link_to "View", dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
+                  |  
+                  = link_to "Delete", dish_path(id: d["objectId"], restaurant_id: @restaurant["objectId"]), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary btn-xs'

@@ -20,4 +20,15 @@ class DishesController < ApplicationController
     redirect_to restaurant_path(id: dish_attributes["cafedb_id"]), notice: "Dish has been added successfully."
   end
 
+  def destroy
+    begin
+      Dish.delete_dish(params[:id])
+    rescue Exception => e
+      puts "## ============ Exception =========== ##"
+      puts e.message
+    end
+
+    redirect_to restaurant_path(id: params["restaurant_id"]), notice: "Dish has been deleted successfully."
+  end
+
 end
