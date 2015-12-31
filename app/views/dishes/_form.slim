@@ -1,4 +1,4 @@
-= simple_form_for :dish, url: "/dishes", html: {class: "dishes_form"} do |f|
+= simple_form_for :dish, url: "/dishes", html: { class: "dishes_form", multipart: true } do |f|
   .form-inputs
     = f.input :name, label: false, placeholder: "Dish name", class: 'form-control'
 
@@ -8,6 +8,9 @@
 
   .form-inputs
     = f.input :description, label: false, as: :text, placeholder: "Enter description here...", class: 'form-control'
+
+  .form-inputs
+    = file_field_tag :dish_image
 
   br
   .form-actions
