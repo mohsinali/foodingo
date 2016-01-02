@@ -16,4 +16,4 @@
   .form-actions
     = f.submit "Add", class: "btn btn-primary btn-add-dish"
     |  
-    = link_to 'Back', restaurants_path, class: "btn btn-default"
+    = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-default"

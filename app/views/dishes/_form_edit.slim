@@ -1,0 +1,23 @@
+= simple_form_for :dish, url: "/dishes/#{@dish['objectId']}", html: { class: "dishes_form", multipart: true }, method: :update do |f|
+  .form-inputs
+    = f.input :name, label: false, placeholder: "Dish name", class: 'form-control', input_html: { value: @dish["dish"] }
+
+  .form-inputs
+    = f.input :price, label: false, placeholder: "Price", class: 'form-control', input_html: { value: @dish["price"] }
+
+  .form-inputs
+    = f.input :description, label: false, as: :text, placeholder: "Enter description here...", class: 'form-control', input_html: { value: @dish["description"] }
+    /= f.input :_method, as: :hidden, input_html: { value: "patch" }
+    <input name="_method" type="hidden" value="patch" />
+
+  .form-inputs
+    = image_tag @dish["imgurl"], size: "200x200"
+
+  .form-inputs
+    = file_field_tag :dish_image
+
+  br
+  .form-actions
+    = f.submit "Update", class: "btn btn-primary btn-add-dish"
+    |  
+    = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-default"
