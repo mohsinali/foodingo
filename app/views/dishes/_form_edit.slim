@@ -7,7 +7,7 @@
 
   .form-inputs
     = f.input :description, label: false, as: :text, placeholder: "Enter description here...", class: 'form-control', input_html: { value: @dish["description"] }
-    /= f.input :_method, as: :hidden, input_html: { value: "patch" }
+    
     <input name="_method" type="hidden" value="patch" />
 
   .form-inputs

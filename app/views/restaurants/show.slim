@@ -3,6 +3,8 @@
     #hbreadcrumb.pull-right.m-t-lg
       ol.hbreadcrumb.breadcrumb
         li          
+          = link_to 'Edit', edit_restaurant_path(id: @restaurant["objectId"]), class: "btn btn-primary btn-xs"
+          |  
           = link_to 'Add a Dish', new_restaurant_dish_path(restaurant_id: @restaurant["objectId"]), class: "btn btn-primary btn-xs"
 
     h2.font-light.m-b-xs

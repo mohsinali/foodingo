@@ -1,0 +1,14 @@
+= simple_form_for :restaurant, :url => "/restaurants/#{@restaurant['objectId']}", method: :update do |f|
+
+  .form-inputs
+    = f.input :cafename, label: false, placeholder: "Restaurant Name", class: 'form-control', input_html: { value: @restaurant["cafename"] }
+
+  .form-inputs
+    = f.input :cafelocation, label: false, placeholder: "Address", class: 'form-control', input_html: { value: @restaurant["cafelocation"] }
+    input name="_method" type="hidden" value="patch"
+
+  br
+  .form-actions
+    = f.submit "Update", class: "btn btn-primary"
+    |  
+    = link_to 'Back', restaurant_path(id: @restaurant["objectId"]), class: "btn btn-default"
