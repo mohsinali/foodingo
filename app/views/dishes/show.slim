@@ -1,13 +1,14 @@
-/- binding.pry
 .hpanel
   .panel-body
     #hbreadcrumb.pull-right.m-t-lg
       ol.hbreadcrumb.breadcrumb
         li
           = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-primary btn-xs"
+          |  
+          = link_to "Edit", edit_dish_path(id: @dish["objectId"]), class: 'btn btn-primary btn-xs'
 
     h2.font-light.m-b-xs
-      = @dish["dish"]
+      = @dish["name"]
 
 .row
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
@@ -23,4 +24,4 @@
 
         br
         br
-        = image_tag @dish["imgurl"]
+        = image_tag @dish["imgurl"], size: "400x400"

@@ -25,16 +25,20 @@ class DishesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @dish = Dish.get_dish params[:id]
     dish = params["dish"]
     @dish["name"] = dish["name"]
     @dish["price"] = dish["price"].to_f
     @dish["description"] = dish["description"]
 
+    if params[:dish_image].present?
+      uploader = DishImageUploader.new
+      uploader.store!(params["dish_image"])
+      @dish["imgurl"] = uploader.url
+    end
+
     result = @dish.save
     puts result
-
     redirect_to dish_path(id: params["id"]), notice: "Dish has been updated successfully."
   end
 
