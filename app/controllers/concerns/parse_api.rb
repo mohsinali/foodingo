@@ -7,6 +7,11 @@ module ParseApi
 		restaurants.get
   end
 
+  def get_users    
+    users = Parse::Query.new("_User")
+    users.get
+  end
+
   def create_restaurant rest_params, user
   	restaurant = Parse::Object.new("cafedb")
     restaurant["cafename"] = rest_params[:cafename]

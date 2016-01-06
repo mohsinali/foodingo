@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  after_action :verify_authorized
+  # after_action :verify_authorized
+  include ParseApi
 
   def index
-    @users = User.all
-    authorize User
+    @users = get_users
+    # authorize User
   end
 
   def show
