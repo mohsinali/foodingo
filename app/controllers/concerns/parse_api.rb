@@ -8,8 +8,15 @@ module ParseApi
   end
 
   def get_users    
-    users = Parse::Query.new("_User")
-    users.get
+    # users = client.query("_User").tap do |q|
+    users = Parse::Query.new("_User").tap do |q|
+      q.order_by = "createdAt"
+      q.order    = :descending
+      q.limit    = 1000
+      # q.include  = "post"
+    end.get
+    # users = Parse::Query.new("_User")
+    # users.get
   end
 
   def create_restaurant rest_params, user

@@ -3,6 +3,21 @@ class UsersController < ApplicationController
   # after_action :verify_authorized
   include ParseApi
 
+  def bulk_email
+    message = nil
+    push_notifications(params[:user_object_ids], message)
+
+  end
+
+  def push_notifications(object_ids , message="test message")
+    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).value_in("objectId", object_ids)
+    # query.eq('injuryReports', true)
+    # query.eq('deviceType', 'android')
+    push = Parse::Push.new(message)
+    push.where = query.where
+    push.save
+  end
+
   def index
     @users = get_users
     # authorize User

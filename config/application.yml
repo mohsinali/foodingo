@@ -23,7 +23,7 @@ DOMAIN_NAME: example.com
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
-PARSE_APP_ID: kDmDHoGKf4YGo8aCwJWqkOJbmOWtE3R2VUbeI7v0
+PARSE_APP_ID: 	kDmDHoGKf4YGo8aCwJWqkOJbmOWtE3R2VUbeI7v0
 PARSE_API_KEY: eqfkwzIh575lJWiTanlIEShH563QdiSV7cm5a6ZA
 
 ## yapjobs Bucket

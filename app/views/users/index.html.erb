@@ -1,16 +1,26 @@
 <div class="container">
-  <div class="row">
     <h3>Users</h3>
-    <div class="column">
+
       <table class="table">
         <tbody>
+          <tr>
+                <th> Email </th>
+                <th> Gender </th>
+                <th> Date of Birth </th>
+
+          </tr>
+    <%= form_tag bulk_email_users_path ,method: :post  do %>
+    <%= submit_tag "add" %>
           <% @users.each do |user| %>
             <tr>
-              <%= user["email"] %>
+              <%= render 'user', user: user %>
             </tr>
           <% end %>
         </tbody>
       </table>
+    <% end %>
+          
     </div>
   </div>
 </div>
+    
