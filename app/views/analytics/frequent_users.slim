@@ -1,0 +1,38 @@
+.hpanel
+  .panel-body      
+    #hbreadcrumb.pull-right.m-t-lg      
+        
+
+    h2.font-light.m-b-xs
+      | Frequent Users
+
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body
+        = simple_form_for :send_push, url: send_push_analytics_path(), remote: true do |f|
+          .row
+            .col-md-8
+              table.table
+                thead
+                  tr
+                    th 
+                    th ID
+                    th Gender
+
+                tbody
+                  - @f_users.each do |u|
+                    tr
+                      / td = f.input "push_user[]", as: :boolean, label: false, input_html: { checked: u["objectId"] }
+                      td = check_box_tag "users[]", u["objectId"], false
+                      td = u["objectId"]
+                      td = u["gender"]
+
+            .col-md-4
+              label Message box
+              br
+              = f.input :message, as: :text, label: false
+              br
+              = f.submit "Send Push", class: "btn btn-success"
+
+

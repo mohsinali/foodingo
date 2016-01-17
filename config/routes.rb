@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :analytics do
   	collection do
       get :dish_frequency
+      get :frequent_users
+      post :send_push
   	end
   end
 

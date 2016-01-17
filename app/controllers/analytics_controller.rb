@@ -27,4 +27,13 @@ class AnalyticsController < ApplicationController
     gon.x_axis = @frequency.keys
   end
 
+  def frequent_users
+    @f_users = User.frequent_users
+
+  end
+
+  def send_push
+    binding.pry
+  end
+
 end
