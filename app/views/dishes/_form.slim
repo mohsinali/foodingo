@@ -11,9 +11,9 @@
 
   .form-inputs
     = file_field_tag :dish_image
-
+  
   br
   .form-actions
     = f.submit "Add", class: "btn btn-primary btn-add-dish"
     |  
-    = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-default"
+    = link_to 'Back', restaurant_path(id: @rst["objectId"]), class: "btn btn-default"
