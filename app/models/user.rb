@@ -27,6 +27,14 @@ class User < ActiveRecord::Base
     end.get
   end
 
+  def self.meal_count(user_id)
+    pointer = Parse::Pointer.new({"className" => USER_CLASS, "objectId" => user_id})
+    meal_history = Parse::Query.new("mealhistory").tap do |q|
+      q.eq("user_id", pointer)
+    end.get
+    meal_history.count.to_s
+  end
+
   private
     def creat_merchant_on_parse
       merchant = Parse::Object.new("merchants").save
