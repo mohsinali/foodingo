@@ -30,6 +30,8 @@ class AnalyticsController < ApplicationController
   def frequent_users
     @f_users = User.frequent_users
 
+    # Y2bXUUZzkC
+
   end
 
   def send_push

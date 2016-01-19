@@ -10,10 +10,10 @@
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
     .hpanel     
       .panel-body
-        = simple_form_for :send_push, url: send_push_analytics_path(), remote: true do |f|
+        = simple_form_for :send_push, url: send_push_analytics_path() do |f|
           .row
             .col-md-8
-              table.table
+              table.table.table-bordered.table-striped
                 thead
                   tr
                     th 
