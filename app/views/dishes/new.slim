@@ -3,10 +3,16 @@
     h2.font-light.m-b-xs
       | Add a Dish to #{@rst["cafename"]}
     
-
 .row
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
     .hpanel     
       .panel-body
+        h2 Choose from our Sample Dishes
+        = render "sample_dishes"
+.row
+  .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+    .hpanel     
+      .panel-body
+        h2 Or add your own
       	== render 'form'
 
