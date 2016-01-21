@@ -3,6 +3,7 @@ class DishesController < ApplicationController
 
   def new
     @rst = Restaurant.get_restaurant params[:restaurant_id]
+    @sample_dishes = SampleDish.get_dishes
   end
 
   def show
@@ -51,6 +52,14 @@ class DishesController < ApplicationController
     end
 
     redirect_to restaurant_path(id: params["restaurant_id"]), notice: "Dish has been deleted successfully."
+  end
+
+  def add_from_sample
+    @dish = SampleDish.get_dish(params[:dish_id])
+    
+    dish = Dish.create_from_sample(@dish, params[:restaurant_id])
+    
+    redirect_to dish_path(id: dish["objectId"]), notice: "Dish copied to your restaurant successfully."
   end
 
 end

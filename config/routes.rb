@@ -5,8 +5,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :users
 
+
+  # resources :dishes do 
+  #   collection do 
+  #     get :add_from_sample
+  #   end 
+  # end
+
   resources :restaurants do
-    resources :dishes
+    resources :dishes do
+      get :add_from_sample
+    end
   end
 
   resources :analytics do
