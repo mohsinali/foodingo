@@ -10,8 +10,10 @@ class Restaurant < ActiveRecord::Base
 	end
 
 	def self.dishes restaurant_objectid
+
 		dishes = Parse::Query.new(DISHES_CLASS_NAME)
-    dishes.eq("cafedb_id", restaurant_objectid)
+	pointer = Parse::Pointer.new({"className" => RESTAURANT_CLASS_NAME, "objectId" => restaurant_objectid})
+	dishes.eq("cafedb_id", pointer)
     dishes.get
 	end
 
