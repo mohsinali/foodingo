@@ -32,7 +32,12 @@
               tr
                 td = d["dish"]
                 td = number_to_currency(d["price"])
-                td = image_tag d["imgurl"], size: "100x100"
+                td  
+                  -if d["imgurl"] 
+                    = image_tag d["imgurl"], size: "50x50"
+                  -else
+                    = image_tag "default_dish.jpg", class: "img-circle m-b", alt: "logo" , size: "50x50"
+
                 td 
                   = link_to "View", dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
                   |  

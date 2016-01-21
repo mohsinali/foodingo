@@ -25,4 +25,8 @@
 
         br
         br
-        = image_tag @dish["imgurl"], size: "400x400" if @dish["imgurl"]
+        
+        -if @dish["imgurl"] 
+          = image_tag @dish["imgurl"] , size: "100x100"
+        -else
+          = image_tag "default_dish.jpg", class: "img-circle m-b", alt: "logo"
