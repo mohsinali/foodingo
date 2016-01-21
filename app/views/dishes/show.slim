@@ -25,4 +25,4 @@
 
         br
         br
-        = image_tag @dish["imgurl"], size: "400x400"
+        = image_tag @dish["imgurl"], size: "400x400" if @dish["imgurl"]

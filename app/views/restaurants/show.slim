@@ -23,13 +23,16 @@
             tr
               th Name
               th Price
+              th 
               th Actions
+
 
           tbody
             - @dishes.each do |d|
               tr
                 td = d["dish"]
                 td = number_to_currency(d["price"])
+                td = image_tag d["imgurl"], size: "100x100"
                 td 
                   = link_to "View", dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
                   |  
