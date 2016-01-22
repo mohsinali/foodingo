@@ -19,6 +19,7 @@
                     th 
                     th ID
                     th Gender
+                    th Meal count
 
                 tbody
                   - @f_users.each do |u|
@@ -27,6 +28,7 @@
                       td = check_box_tag "users[]", u["objectId"], false
                       td = u["objectId"]
                       td = u["gender"]
+                      td = User.meal_count(u["objectId"])
 
             .col-md-4
               label Message box
