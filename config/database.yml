@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 8.2 and up are supported.
+ # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -18,8 +18,8 @@ development:
   encoding: unicode
   database: foodingo_development
   pool:     5
-  username: mohsin
-  password: 
+  username: postgres
+  password: root
   template: template0
 
   # Connect on a TCP socket. Omitted by default since the client uses a
