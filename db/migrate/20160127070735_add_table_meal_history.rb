@@ -13,7 +13,7 @@ class AddTableMealHistory < ActiveRecord::Migration
 		  t.string  :merchant_id
 		  t.float :prot_gms
 		  t.string :dish
-		  t.string :meal_type
+		  t.string :meal_historiestype
 		  t.float :carb_gms
 		  t.string :restaurant
 		  t.string :cafedb_id
