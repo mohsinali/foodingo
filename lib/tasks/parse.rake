@@ -6,6 +6,12 @@ namespace :parse do
       q.limit = 1000
     end.get
     puts mealhistory.count
+
+    # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    MealHistory.delete_all
+    ActiveRecord::Base.connection.execute("ALTER SEQUENCE meal_histories_id_seq RESTART WITH 1")
+    # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     mealhistory.each do |meal|
       hash = Hash.new
       hash["objectId"] = meal["objectId"]
@@ -21,7 +27,7 @@ namespace :parse do
       hash["energyKcal"] = meal["energyKcal"]
       hash["imgurl"] = meal["imgurl"]
       hash["consumption_date"] = meal["consumption_date"]
-      hash["meal_type"] = meal["type"]
+      hash["meal_historiestype"] = meal["type"]
       hash["dish"] = meal["dish"]
       hash["restaurant"] = meal["restaurant"]
       meal_obj = MealHistory.new(hash)
