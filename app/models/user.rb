@@ -21,22 +21,23 @@ class User < ActiveRecord::Base
   ####################################
   ## Parse Queries
   def self.frequent_users
-    top_meals = MealHistory.group(:user_id).order('count_id desc').limit(10).count('id')
-    user_ids = []
-    top_meals.each do |user_id, count|
-      user_ids.push(user_id)
-    end
-    user_objs = []
-    user_ids.each do |user|
-      user_frequency = Parse::Query.new("_User").tap do |q|
-        q.eq("objectId", user)
-      end.get
-      unless user_frequency.blank?
-        user_frequency.first["count"] = top_meals[user_frequency.first["objectId"]]
-        user_objs.push(user_frequency.first)
-      end
-    end
-    return user_objs
+    # MealHistory.group(:user_id).order('count_id desc').limit(10).count('id')
+    # binding.pry
+    # user_ids = []
+    # top_meals.each do |user_id, count|
+    #   user_ids.push(user_id)
+    # end
+    # user_objs = []
+    # user_ids.each do |user|
+    #   user_frequency = Parse::Query.new("_User").tap do |q|
+    #     q.eq("objectId", user)
+    #   end.get
+    #   unless user_frequency.blank?
+    #     user_frequency.first["count"] = top_meals[user_frequency.first["objectId"]]
+    #     user_objs.push(user_frequency.first)
+    #   end
+    # end
+    # return user_objs
   end
 
   private

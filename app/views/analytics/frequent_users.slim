@@ -24,9 +24,9 @@
                   - @f_users.each do |u|
                     tr
                       / td = f.input "push_user[]", as: :boolean, label: false, input_html: { checked: u["objectId"] }
-                      td = check_box_tag "users[]", u["objectId"], false
-                      td = u["objectId"]
-                      td = u["count"]
+                      td = check_box_tag "users[]", u.first, false
+                      td = u.first
+                      td = u.second
 
             .col-md-4
               label Message box

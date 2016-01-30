@@ -28,14 +28,24 @@ class AnalyticsController < ApplicationController
   end
 
   def frequent_users
-    @f_users = User.frequent_users
-
-    # Y2bXUUZzkC
+    @f_users = MealHistory.frequent_users    
 
   end
 
   def send_push
-    binding.pry
+    msg = { :push_type => 'Message',
+      :aps => { 
+        :alert => params[:send_push][:message],
+        :sound => "default"
+      }
+    }
+
+    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).value_in('user_id', params[:users])
+    push = Parse::Push.new(msg)
+    push.where = query.where
+    push.save
+
+    redirect_to frequent_users_analytics_path(), notice: "Push notifications sent to selected users."
   end
 
 end

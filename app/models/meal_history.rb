@@ -2,6 +2,8 @@ class MealHistory < ActiveRecord::Base
   MEAL_HISTORY_CLASS = "mealhistory"
   MERCHANT_CLASS = "merchants"
 
+  scope :frequent_users, ->{ group(:user_id).order('count_id desc').limit(10).count('id') }
+
 
   def self.history parse_merchant_id
     pointer = Parse::Pointer.new({"className" => MERCHANT_CLASS, "objectId" => parse_merchant_id})
