@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   #   end 
   # end
 
+  resources :webhooks, :none do
+    collection do
+      post :sync_mealhistory
+    end
+  end
+
   resources :restaurants do
     resources :dishes do
       get :add_from_sample
