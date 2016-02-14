@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20160214105022) do
     t.integer  "parent_id"
     t.integer  "child_id"
     t.float    "dist"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "child_objectId"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "meal_histories", force: :cascade do |t|

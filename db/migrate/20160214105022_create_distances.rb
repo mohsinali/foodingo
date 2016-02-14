@@ -4,6 +4,7 @@ class CreateDistances < ActiveRecord::Migration
       t.integer :parent_id
       t.integer :child_id
       t.float :dist
+      t.string :child_objectId
 
       t.timestamps null: false
     end
