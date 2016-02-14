@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get :dish_frequency
       get :frequent_users
       post :send_push
+      get '/frequent_dishes/:rest_id' => 'analytics#frequent_dishes', as: :frequent_dishes
   	end
   end
 

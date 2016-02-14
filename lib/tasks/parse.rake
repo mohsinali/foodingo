@@ -35,5 +35,49 @@ namespace :parse do
     end
       
   end
+
+
+  ### =====================================================
+  desc "Fetch all cafedb data"
+  task cafedb: :environment do
+    cafedb = Parse::Query.new("cafedb").tap do |q|
+      q.limit = 1000
+    end.get
+    puts cafedb.count
+
+    # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Restaurant.delete_all
+    ActiveRecord::Base.connection.execute("ALTER SEQUENCE restaurants_id_seq RESTART WITH 1")
+    # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    
+    cafedb.each do |c|
+      hash = Hash.new
+      hash["objectId"] = c["objectId"]
+      hash["cafename"] = c["cafename"]
+      hash["cafelocation"] = c["cafelocation"]
+      hash["merchant_id"] = c["merchant_id"]
+      
+      unless c["loc_geopoint"].blank?
+        hash["lat"] = c["loc_geopoint"].latitude
+        hash["lon"] = c["loc_geopoint"].longitude
+      end
+
+      rest = Restaurant.new(hash)
+      rest.save
+    end
+
+  end
+
+  ### =====================================================
+  # desc "Calculate distance"
+  # task calculate_distance: :environment, [:location] do |t, args|
+  #   # args.location
+  #   binding.pry
+  #   Restaurant.all.each do |r|
+  #     puts Restaurant.distance args.location, r.lat + "," + r.lon
+  #   end
+
+  # end
+
 	
 end

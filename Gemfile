@@ -17,6 +17,7 @@ gem 'parse-ruby-client'
 gem 'jquery-validation-rails'
 gem 'gon'
 gem 'geocoder'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug'

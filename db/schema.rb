@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127070735) do
+ActiveRecord::Schema.define(version: 20160214105022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "distances", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.integer  "child_id"
+    t.float    "dist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "meal_histories", force: :cascade do |t|
     t.string   "objectId"
@@ -35,6 +43,16 @@ ActiveRecord::Schema.define(version: 20160127070735) do
     t.string   "cafedb_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "objectId"
+    t.string "cafename"
+    t.string "cafelocation"
+    t.string "merchant_id"
+    t.string "lat"
+    t.string "lon"
+    t.float  "distance"
   end
 
   create_table "roles", force: :cascade do |t|

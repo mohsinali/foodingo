@@ -20,6 +20,23 @@ class AnalyticsController < ApplicationController
 
   end
 
+  def frequent_dishes
+    ####################################################
+    ## Restaurant id is mandatory
+    redirect_to restaurants_path(), notice: "Please provide a valid restaurant id." if params[:rest_id].blank?
+    ####################################################
+
+    parent_restaurant = Restaurant.where(objectId: params[:rest_id])
+    Distance.where(parent_id: parent_restaurant.first.id).delete_all
+    
+    Restaurant.all.each do |r|
+      dist = Restaurant.distance(parent_restaurant.first.lat.to_s + "," + parent_restaurant.first.lon.to_s, r.lat.to_s + "," + r.lon.to_s)
+      Distance.create(parent_id: parent_restaurant.first.id, child_id: r.id, dist: dist)
+    end
+
+
+  end
+
   def dish_frequency
     @frequency = MealHistory.dishes_frequency current_user.parse_merchant_id
 
