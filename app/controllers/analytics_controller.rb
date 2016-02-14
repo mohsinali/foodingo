@@ -27,6 +27,7 @@ class AnalyticsController < ApplicationController
     ####################################################
 
     parent_restaurant = Restaurant.where(objectId: params[:rest_id])
+    
     Distance.where(parent_id: parent_restaurant.first.id).delete_all
     
     Restaurant.all.each do |r|
@@ -34,10 +35,17 @@ class AnalyticsController < ApplicationController
       puts "================= Calculated distance"
       puts dist
 
-      if dist < 0.06  ## Only if distance is less than 60 meters
+      if dist > 0.06  ## Only if distance is less than 60 meters
         Distance.create(parent_id: parent_restaurant.first.id, child_id: r.id, dist: dist, child_objectId: r.objectId)
       end
     end
+
+    restaurants_in_radius = Distance.where(parent_id: parent_restaurant.first.id).order("dist desc").map &:child_objectId
+    frequent_dishes_in_radius = MealHistory.where("cafedb_id IN(?)", restaurants_in_radius).group(:dish_id).order("count_dish_id").limit(10).count("dish_id")
+    
+    dish = Parse::Query.new("mealsdummyx")
+    dish.value_in('objectId', frequent_dishes_in_radius)
+    @dishes = dish.get
 
 
   end
