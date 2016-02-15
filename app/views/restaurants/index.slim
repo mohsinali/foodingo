@@ -33,4 +33,7 @@
                   = link_to "Add Dishes", new_restaurant_dish_path(restaurant_id: restaurant["objectId"]), class: 'btn btn-primary btn-xs'
                   |  
                   = link_to "Detail", restaurant_path(id: restaurant['objectId']), class: 'btn btn-primary btn-xs'
+                  |  
+                  = link_to frequent_dishes_analytics_path(rest_id: restaurant['objectId']), class: "btn btn-primary btn-xs" do
+                    span.glyphicon.glyphicon-fire aria-hidden="true"
                   

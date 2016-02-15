@@ -35,7 +35,7 @@ class AnalyticsController < ApplicationController
       puts "================= Calculated distance"
       puts dist
 
-      if dist > 0.06  ## Only if distance is less than 60 meters
+      if dist < 0.06  ## Only if distance is less than 60 meters
         Distance.create(parent_id: parent_restaurant.first.id, child_id: r.id, dist: dist, child_objectId: r.objectId)
       end
     end
