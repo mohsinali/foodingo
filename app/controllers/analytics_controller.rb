@@ -21,6 +21,7 @@ class AnalyticsController < ApplicationController
   end
 
   def frequent_dishes
+    system "rake parse:cafedb"
     ####################################################
     ## Restaurant id is mandatory
     redirect_to restaurants_path(), notice: "Please provide a valid restaurant id." if params[:rest_id].blank?
