@@ -2,7 +2,11 @@ aside#menu
   #navigation
     .profile-picture
       a href="/"
-        = image_tag "logo80x80.png", class: "img-circle m-b"
+        - if current_user.merchant_logo.blank?
+          = image_tag "logo80x80.png", class: "img-circle m-b"
+        - else
+          = image_tag current_user.merchant_logo, class: "img-circle m-b"
+
       .stats-label.text-color
         - if user_signed_in?
           span.font-extra-bold #{current_user.email}
@@ -13,11 +17,8 @@ aside#menu
               b.caret
           ul.dropdown-menu.animated.fadeInRight.m-t-xs
             li
-              a href="contacts.html"  Contacts
-            li
-              a href="profile.html"  Profile
-            li
-              a href="analytics.html"  Analytics
+              = link_to "Upload Logo", settings_users_path()
+            
             li.divider
             li
               a href="login.html"  Logout

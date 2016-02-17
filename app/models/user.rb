@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   USER_CLASS = "_User"
 
+  mount_uploader :merchant_logo, MerchantLogoUploader
+
   # has_many :categories, :class_name => "Category", :foreign_key => "restaurant_owner_id"
   # has_many :menus, :class_name => "Menu", :foreign_key => "restaurant_owner_id"
   # has_many :device_table_mappings, :class_name => "DeviceTableMapping", :foreign_key => "restaurant_owner_id"

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  after_action :verify_authorized
+  after_action :verify_authorized, except: [ :settings, :upload_logo ]
 
   def index
     @users = User.all
@@ -27,6 +27,17 @@ class UsersController < ApplicationController
     authorize user
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+  def settings
+  end
+
+  def upload_logo    
+    uploader = MerchantLogoUploader.new
+    binding.pry
+    uploader.store!(params[:merchant_logo][:logo])
+
+    redirect_to settings_users_path(), notice: "Your logo has been uploaded."    
   end
 
   private

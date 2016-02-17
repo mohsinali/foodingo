@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   root to: 'restaurants#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
-  resources :users
+  resources :users do 
+    collection do
+      get :settings
+      post :upload_logo
+    end
+  end
 
 
   # resources :dishes do 
