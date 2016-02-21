@@ -70,8 +70,14 @@ class AnalyticsController < ApplicationController
         :sound => "default"
       }
     }
+    
 
-    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).value_in('user_id', params[:users])
+    pointers = []
+    params[:users].each do |p|
+      pointers << Parse::Pointer.new({"className" => "_User", "objectId" => p})
+    end
+
+    query = Parse::Query.new(Parse::Protocol::CLASS_INSTALLATION).value_in('user_id', pointers)
     push = Parse::Push.new(msg)
     push.where = query.where
     push.save
