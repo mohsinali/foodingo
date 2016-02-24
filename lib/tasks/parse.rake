@@ -3,15 +3,18 @@ namespace :parse do
 	desc "Fetch all mealhistory data from parse"
 	task mealhistory: :environment do
     mealhistory = Parse::Query.new("mealhistory").tap do |q|
-      q.limit = 1000
+      # q.eq("cafedb_id", pointer = Parse::Pointer.new({"className" => "cafedb", "objectId" => "oN8EOwW7d4"}))
+      q.exists("cafedb", false)
+      # q.limit = 1000
+      q.include = "cafedb"
     end.get
     puts mealhistory.count
-
+    
     # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     MealHistory.delete_all
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE meal_histories_id_seq RESTART WITH 1")
     # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
+    # binding.pry
     mealhistory.each do |meal|
       hash = Hash.new
       hash["objectId"] = meal["objectId"]
