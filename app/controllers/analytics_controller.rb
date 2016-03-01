@@ -60,7 +60,7 @@ class AnalyticsController < ApplicationController
 
   def dish_frequency
     @frequency = MealHistory.dishes_frequency current_user.parse_merchant_id
-
+    
     gon.y_axis = @frequency.values
     gon.x_axis = @frequency.keys
   end

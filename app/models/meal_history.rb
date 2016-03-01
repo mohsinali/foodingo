@@ -15,37 +15,18 @@ class MealHistory < ActiveRecord::Base
   end
 
   def self.dishes_frequency parse_merchant_id
-    hash_frequency = Hash.new
+    restaurants = Restaurant.where(merchant_id: parse_merchant_id)
+    arr_restaurants = restaurants.map &:objectId
+    mh = MealHistory.where("cafedb_id IN(?)", arr_restaurants).group(:dish_id).count(:dish_id)
+    dishes = mh.map{|m| m.first}
+    ds = Dish.get_dishes(dishes)
 
-    pointer = Parse::Pointer.new({"className" => MERCHANT_CLASS, "objectId" => parse_merchant_id})
-    dishes_frequency = Parse::Query.new(MEAL_HISTORY_CLASS).tap do |q|
-      q.eq("merchant_id", pointer)
-      q.exists("dish_id", true)
-      q.include = "dish_id"
-      q.order_by = "createdAt"
-      q.order    = :ascending
-    end.get
-
-    frequency = Hash.new
-
-    dishes_frequency.each do |d|
-      if frequency.has_key? d["dish_id"]["objectId"]
-        frequency[d["dish_id"]["objectId"]][1] += 1
-      else
-        data = []
-        data << d["dish_id"]["dish"]
-        data << 1
-
-        frequency[d["dish_id"]["objectId"]] = data  
-      end      
+    frequency = {}
+    ds.each do |d|
+      frequency[d["dish"]] = mh[d["objectId"]]
     end
 
-    frequency.each do |f|
-      hash_frequency[f.second[0]] = f.second[1]
-    end
-
-    # where={"dish_id":{"$exists":true}}&include=dish_id
-    hash_frequency
+    frequency
   end
   
 end

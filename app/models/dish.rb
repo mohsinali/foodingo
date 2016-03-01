@@ -32,6 +32,12 @@ class Dish < ActiveRecord::Base
     dish.get.first
   end
 
+  def self.get_dishes objects
+    dish = Parse::Query.new(DISHES_CLASS_NAME)    
+    dish.value_in("objectId", objects)
+    dish.get
+  end  
+
   def self.delete_dish objectId
     dish = Parse::Query.new(DISHES_CLASS_NAME)
     dish.eq("objectId", objectId)
