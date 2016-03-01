@@ -4,9 +4,11 @@ namespace :parse do
 	task mealhistory: :environment do
     mealhistory = Parse::Query.new("mealhistory").tap do |q|
       # q.eq("cafedb_id", pointer = Parse::Pointer.new({"className" => "cafedb", "objectId" => "oN8EOwW7d4"}))
-      q.exists("cafedb", false)
-      # q.limit = 1000
-      q.include = "cafedb"
+      # q.exists("cafedb", false)
+      q.limit = 1000
+      q.order_by = "createdAt"
+      q.order = :descending
+      # q.include = "cafedb"
     end.get
     puts mealhistory.count
     
@@ -34,7 +36,11 @@ namespace :parse do
       hash["dish"] = meal["dish"]
       hash["restaurant"] = meal["restaurant"]
       meal_obj = MealHistory.new(hash)
-      meal_obj.save!
+      
+      if meal_obj.save
+      else
+        puts "#{meal["objectId"]}: History not saved."
+      end
     end
       
   end

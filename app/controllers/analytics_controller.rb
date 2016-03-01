@@ -36,19 +36,26 @@ class AnalyticsController < ApplicationController
       puts "================= Calculated distance"
       puts dist
 
-      if dist < 0.06  ## Only if distance is less than 60 meters
+      if dist < 0.10  ## Only if distance is less than 100 meters
         Distance.create(parent_id: parent_restaurant.first.id, child_id: r.id, dist: dist, child_objectId: r.objectId)
       end
     end
 
     restaurants_in_radius = Distance.where(parent_id: parent_restaurant.first.id).order("dist desc").map &:child_objectId
-    frequent_dishes_in_radius = MealHistory.where("cafedb_id IN(?)", restaurants_in_radius).group(:dish_id).order("count_dish_id").limit(10).count("dish_id")
+    frequent_dishes_in_radius = MealHistory.where("cafedb_id IN(?)", restaurants_in_radius).group(:dish_id).order("count_dish_id").limit(10).count("dish_id")    
     
     dish = Parse::Query.new("mealsdummyx")
-    dish.value_in('objectId', frequent_dishes_in_radius)
+    dish.value_in('objectId', frequent_dishes_in_radius.map{|d| d[0]})
     @dishes = dish.get
 
+    
+    ds = {}
+    @dishes.each do |d|
+      ds[d["dish"]] = frequent_dishes_in_radius[d["objectId"]]
+    end
 
+    gon.y_axis = ds.values
+    gon.x_axis = ds.keys
   end
 
   def dish_frequency
