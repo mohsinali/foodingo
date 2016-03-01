@@ -1,5 +1,5 @@
 Rails.application.routes.draw do  
-  resources :restaurants, :dishes
+  resources :dishes
   root to: 'restaurants#index'
   # devise_for :users
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
+    collection do
+      get :sync
+    end
     resources :dishes do
-      get :add_from_sample
+      get :add_from_sample      
     end
   end
 

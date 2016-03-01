@@ -35,4 +35,9 @@ class RestaurantsController < ApplicationController
 
     redirect_to restaurants_path(id: restaurant["id"])
   end
+
+  def sync
+    system "rake parse:mealhistory"
+    redirect_to restaurants_path, notice: "Syncing completed."
+  end
 end
