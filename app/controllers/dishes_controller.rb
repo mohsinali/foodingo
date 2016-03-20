@@ -28,7 +28,7 @@ class DishesController < ApplicationController
   def update
     @dish = Dish.get_dish params[:id]
     dish = params["dish"]
-    @dish["name"] = dish["name"]
+    @dish["dish"] = dish["name"]
     @dish["price"] = dish["price"].to_f
     @dish["description"] = dish["description"]
 
@@ -40,7 +40,7 @@ class DishesController < ApplicationController
 
     result = @dish.save
     puts result
-    redirect_to dish_path(id: params["id"]), notice: "Dish has been updated successfully."
+    redirect_to restaurant_dish_path(id: params["id"],restaurant_id: dish["cafedb_id"]), notice: "Dish has been updated successfully."
   end
 
   def destroy

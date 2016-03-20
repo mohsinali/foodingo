@@ -1,6 +1,7 @@
 = simple_form_for :dish, url: "/dishes/#{@dish['objectId']}", html: { class: "dishes_form", multipart: true }, method: :update do |f|
   .form-inputs
     = f.input :name, label: false, placeholder: "Dish name", class: 'form-control', input_html: { value: @dish["dish"] }
+    = f.input :cafedb_id, as: "hidden", input_html: { value: params[:restaurant_id] }
 
   .form-inputs
     = f.input :price, label: false, placeholder: "Price", class: 'form-control', input_html: { value: @dish["price"] }
@@ -20,4 +21,4 @@
   .form-actions
     = f.submit "Update", class: "btn btn-primary btn-add-dish"
     |  
-    = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-default"
+    = link_to 'Back', restaurant_path(id: params[:restaurant_id]), class: "btn btn-default"

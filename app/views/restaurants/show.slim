@@ -39,8 +39,8 @@
                     = image_tag "default_dish.jpg", class: "img-circle m-b", alt: "logo" , size: "50x50"
 
                 td 
-                  = link_to "View", dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
+                  = link_to "View", restaurant_dish_path(id: d["objectId"],restaurant_id: @restaurant["objectId"]), class: 'btn btn-primary btn-xs'
                   |  
-                  = link_to "Edit", edit_dish_path(id: d["objectId"]), class: 'btn btn-primary btn-xs'
+                  = link_to "Edit", edit_restaurant_dish_path(id: d["objectId"],restaurant_id: @restaurant["objectId"]), class: 'btn btn-primary btn-xs'
                   |  
                   = link_to "Delete", dish_path(id: d["objectId"], restaurant_id: @restaurant["objectId"]), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-primary btn-xs'

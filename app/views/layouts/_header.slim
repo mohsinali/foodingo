@@ -2,7 +2,7 @@
   .color-line
   #logo.light-version
     span
-      | Foodingo
+      | #{ current_user.present? ? current_user.name : 'Foodingo'}
   nav role="navigation" 
     .header-link.hide-menu
       i.fa.fa-bars

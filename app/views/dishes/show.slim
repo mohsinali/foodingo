@@ -3,9 +3,9 @@
     #hbreadcrumb.pull-right.m-t-lg
       ol.hbreadcrumb.breadcrumb
         li
-          = link_to 'Back', restaurant_path(id: @dish["cafedb_id"]), class: "btn btn-primary btn-xs"
+          = link_to 'Back', restaurant_path(id: params[:restaurant_id]), class: "btn btn-primary btn-xs"
           |  
-          = link_to "Edit", edit_dish_path(id: @dish["objectId"]), class: 'btn btn-primary btn-xs'
+          = link_to "Edit", edit_restaurant_dish_path(id: @dish["objectId"],restaurant_id: params[:restaurant_id]), class: 'btn btn-primary btn-xs'
 
     h2.font-light.m-b-xs
       = @dish["dish"]
