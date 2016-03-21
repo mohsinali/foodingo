@@ -59,6 +59,8 @@ class AnalyticsController < ApplicationController
   end
 
   def dish_frequency
+    @start_date = params[:start_date].present? ? params[:start_date] : (Date.today-7.days).strftime('%d/%m/%Y')
+    @end_date = params[:end_date].present? ? params[:end_date] : (Date.today).strftime('%d/%m/%Y')
     @frequency = MealHistory.dishes_frequency current_user.parse_merchant_id
     
     gon.y_axis = @frequency.values
