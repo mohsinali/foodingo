@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   rolify
   after_initialize :set_default_role, :if => :new_record?
   before_create :creat_merchant_on_parse
+  validates :name, presence: true
 
   USER_CLASS = "_User"
 

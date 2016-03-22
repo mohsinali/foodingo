@@ -33,11 +33,17 @@ class UsersController < ApplicationController
   end
 
   def upload_logo    
-    uploader = MerchantLogoUploader.new
-    binding.pry
-    uploader.store!(params[:merchant_logo][:logo])
-
-    redirect_to settings_users_path(), notice: "Your logo has been uploaded."    
+    # uploader = MerchantLogoUploader.new
+    # #binding.pry
+    # uploader.store!(params[:merchant_logo][:logo])
+    unless current_user
+      redirect_to new_user_session_path, notice: "Please login for uploading logo"
+    else
+      @user = current_user
+      @user.merchant_logo = params[:merchant_logo][:logo] if params[:merchant_logo] and params[:merchant_logo][:logo].present?
+      @user.save
+      redirect_to settings_users_path(), notice: "Your logo has been uploaded."
+    end
   end
 
   private

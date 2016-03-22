@@ -6,7 +6,6 @@ aside#menu
           = image_tag "logo80x80.png", class: "img-circle m-b"
         - else
           = image_tag current_user.merchant_logo, class: "img-circle m-b"
-
       .stats-label.text-color
         - if user_signed_in?
           span.font-extra-bold #{current_user.email}
@@ -17,7 +16,7 @@ aside#menu
               b.caret
           ul.dropdown-menu.animated.fadeInRight.m-t-xs
             li
-              = link_to "Upload Logo", settings_users_path()
+              = link_to "#{current_user.merchant_logo.present? ? 'Update Logo' : 'Upload Logo'}", settings_users_path()
             
             li.divider
             li
@@ -40,7 +39,7 @@ aside#menu
 
         ul.nav.nav-second-level.collapse
           li
-            = link_to analytics_path do
+            = link_to user_frequency_analytics_path do
               | User Frequency
 
           li
@@ -49,7 +48,7 @@ aside#menu
 
           li
             = link_to frequent_users_analytics_path do
-              | Frequent User
+              | Frequent Users
 
       li
         = link_to "#" do

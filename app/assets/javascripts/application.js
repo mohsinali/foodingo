@@ -27,4 +27,5 @@
 //= require sparkline/index.js
 //= require homer.js
 //= require chartjs/Chart.min.js
+//= require bootstrap-datepicker.js
 	
