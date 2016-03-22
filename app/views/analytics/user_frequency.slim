@@ -1,0 +1,76 @@
+.hpanel
+  .panel-body      
+    .row
+      .pull-left
+        h2.font-light.m-b-xs
+          | User Frequency
+      .pull-right
+        = simple_form_for :user_frequency,url: user_frequency_analytics_path do |f|
+          .pull-left.m-r.xs
+            input.form-control.datepicker type='text' placeholder='Start Date' name='start_date' data-provide="datepicker" data-date-format="dd/mm/yyyy" value="#{@start_date}"
+          .pull-left.m-r.xs
+            input.form-control.datepicker type='text' placeholder='End Date' name='end_date' data-provide="datepicker" data-date-format="dd/mm/yyyy" value="#{@end_date}"
+          .pull-right.m-r.xs
+            input.btn.btn-small type='submit' value='Go'
+
+
+.row
+    .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 
+      .hpanel     
+        .panel-body        
+          - if @history.empty?
+            .text-info
+              | Currently no stats are available.
+          - else
+            div
+            	canvas#lineOptions height="140"
+
+          .text-center
+            h1.m-xs.font-trans User Frequency
+
+javascript:
+	$(function () {
+
+
+        /**
+         * Options for Line chart
+         */
+        var lineData = {
+            labels: gon.x_axis,
+            datasets: [
+                
+                {
+                    label: "Example dataset",
+                    fillColor: "rgba(98,203,49,0.5)",
+                    strokeColor: "rgba(98,203,49,0.7)",
+                    pointColor: "rgba(98,203,49,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(26,179,148,1)",
+                    data: gon.y_axis
+                }
+            ]
+        };
+
+        var lineOptions = {
+            scaleShowGridLines : true,
+            scaleGridLineColor : "rgba(0,0,0,.05)",
+            scaleGridLineWidth : 1,
+            bezierCurve : true,
+            bezierCurveTension : 0.4,
+            pointDot : true,
+            pointDotRadius : 4,
+            pointDotStrokeWidth : 1,
+            pointHitDetectionRadius : 20,
+            datasetStroke : true,
+            datasetStrokeWidth : 1,
+            datasetFill : true,
+            responsive: true
+        };
+
+
+        var ctx = document.getElementById("lineOptions").getContext("2d");
+        var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+
+        
+    });

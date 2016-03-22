@@ -35,6 +35,7 @@ namespace :parse do
       hash["meal_historiestype"] = meal["type"]
       hash["dish"] = meal["dish"]
       hash["restaurant"] = meal["restaurant"]
+      hash["parse_created_date"] = meal["createdAt"].try(:to_datetime)
       meal_obj = MealHistory.new(hash)
       
       if meal_obj.save

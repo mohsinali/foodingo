@@ -1,10 +1,17 @@
 .hpanel
   .panel-body      
-    #hbreadcrumb.pull-right.m-t-lg      
-        
-
-    h2.font-light.m-b-xs
-      | Frequent Dishes
+    .row
+      .pull-left
+        h2.font-light.m-b-xs
+          | Frequent Dishes
+      .pull-right
+        = simple_form_for :frequent_dishes,url: frequent_dishes_analytics_path(rest_id: params[:rest_id]) do |f|
+          .pull-left.m-r.xs
+            input.form-control.datepicker type='text' placeholder='Start Date' name='start_date' data-provide="datepicker" data-date-format="dd/mm/yyyy" value="#{@start_date}"
+          .pull-left.m-r.xs
+            input.form-control.datepicker type='text' placeholder='End Date' name='end_date' data-provide="datepicker" data-date-format="dd/mm/yyyy" value="#{@end_date}"
+          .pull-right.m-r.xs
+            input.btn.btn-small type='submit' value='Go'
 
 .row
   .col-lg-12.animated-panel.zoomIn style=("-webkit-animation-delay: 0.2s;") 

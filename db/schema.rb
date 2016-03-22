@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217144615) do
+ActiveRecord::Schema.define(version: 20160322024205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160217144615) do
     t.string   "cafedb_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "parse_created_date"
   end
 
   create_table "restaurants", force: :cascade do |t|
