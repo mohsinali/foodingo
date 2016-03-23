@@ -20,7 +20,7 @@ aside#menu
             
             li.divider
             li
-              a href="login.html"  Logout
+              = link_to "Logout",destroy_user_session_path, :method=>'delete'
         #sparkline1.small-chart.m-t-sm
         div
           h4.font-extra-bold.m-b-xs
